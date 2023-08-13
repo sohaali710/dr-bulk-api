@@ -1,7 +1,6 @@
 # Dr-Bulk-API
-Take an action to modify order state.
       
-### To run the server :
+### To run the server
 ###### In the production mode :
 
 ```
@@ -14,7 +13,9 @@ npm run prod
 npm run dev
 ```
 
+
 ## APIS
+
 
 ### Admin
 
@@ -22,75 +23,54 @@ npm run dev
 
   method --> POST
   
-  access --> private [Admin]
 ```
-http://localhost:5001/api/admin/login
-```
-
-- Logout
-
-  method --> POST
-  
-  access --> private [Admin]
-```
-https://homey-ecommerce-api.onrender.com/admin/logout
+http://localhost:5001/api/admins/login
 ```
 
+body {
+
+email : type String,
+
+password : type String  // Admin123
+
+}
 
 <hr/>
 
 ### User
 
-- User signup
-
   method --> POST
   
-  access --> private [User]
 ```
-https://homey-ecommerce-api.onrender.com/user/signup
+http://localhost:5001/api/users/signup
 ```
+
+body {
+
+name : type String ,
+      
+email : type String ,
+      
+password : type String ,   // more than 8 chars & doesn't contain "password" word
+      
+gender : type String ,     // "M" or "F"
+      
+phoneNumber : type String
+      
+}
 
 - User login
 
   method --> POST
   
-  access --> private [User]
 ```
-https://homey-ecommerce-api.onrender.com/user/login
+http://localhost:5001/api/users/login
 ```
 
-- User logout
+body {
 
-  method --> POST
+email : type String ,
   
-  access --> private [User]
-```
-https://homey-ecommerce-api.onrender.com/user/logout
-```
-
-- User logout from all sessions (devices) 
-
-  method --> POST
+password : type String
   
-  access --> private [User]
-```
-https://homey-ecommerce-api.onrender.com/user/logout-all
-```
-
-- Get user profile
-
-  method --> GET
-  
-  access --> private [User]
-```
-https://homey-ecommerce-api.onrender.com/user/profile
-```
-
-- Update user profile
-
-  method --> PUT
-  
-  access --> private [User]
-```
-https://homey-ecommerce-api.onrender.com/user/profile/update
-```
+}
