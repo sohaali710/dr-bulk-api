@@ -1,13 +1,20 @@
 # Dr-Bulk-API
       
-### To run the server
-###### In the production mode :
+#### 1) To install packages :
+   
+```
+npm i
+```
+
+#### 2) To run the server
+
+In the production mode [frontend dev] :
 
 ```
 npm run prod
 ```
 
-###### In the development mode :
+In the development mode :
 
 ```
 npm run dev
@@ -29,7 +36,7 @@ http://localhost:5001/api/admins/login
 
 body {
 
-email : type String,
+email : type String,      // admin@admin.com
 
 password : type String      // Admin123
 
