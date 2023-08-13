@@ -28,8 +28,11 @@ http://localhost:5001/api/admins/login
 ```
 
 body {
-      email : type String ,
-      password : type String  // Admin123
+
+email : type String,
+
+password : type String  // Admin123
+
 }
 
 <hr/>
@@ -43,11 +46,17 @@ http://localhost:5001/api/users/signup
 ```
 
 body {
-      name : type String ,
-      email : type String ,
-      password : type String ,   // more than 8 chars & doesn't contain "password" word
-      gender : type String ,     // "M" or "F"
-      phoneNumber : type String
+
+name : type String ,
+      
+email : type String ,
+      
+password : type String ,   // more than 8 chars & doesn't contain "password" word
+      
+gender : type String ,     // "M" or "F"
+      
+phoneNumber : type String
+      
 }
 
 - User login
@@ -59,6 +68,9 @@ http://localhost:5001/api/users/login
 ```
 
 body {
-      email : type String ,
-      password : type String
+
+email : type String ,
+  
+password : type String
+  
 }
