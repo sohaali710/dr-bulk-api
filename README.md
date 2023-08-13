@@ -31,7 +31,7 @@ body {
 
 email : type String,
 
-password : type String  // Admin123
+password : type String      // Admin123
 
 }
 
@@ -51,9 +51,9 @@ name : type String ,
       
 email : type String ,
       
-password : type String ,   // more than 8 chars & doesn't contain "password" word
+password : type String ,      // more than 8 chars & doesn't contain "password" word
       
-gender : type String ,     // "M" or "F"
+gender : type String ,      // "M" or "F"
       
 phoneNumber : type String
       
