@@ -41,6 +41,23 @@ email : type String,      // admin@admin.com
 password : type String      // Admin123
 
 }
+- Change password
+
+  method --> POST
+  
+```
+http://localhost:5001/api/admins/change-password
+```
+
+body {
+
+email : type String,      // admin@admin.com
+
+password : type String,      // old password
+
+newPassword : type String      // more than 8 chars & doesn't contain "password" word
+
+}
 
 <hr/>
 
