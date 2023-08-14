@@ -63,6 +63,8 @@ newPassword : type String      // more than 8 chars & doesn't contain "password"
 
 ### User
 
+- User signup
+
   method --> POST
   
 ```
