@@ -70,13 +70,13 @@ adminSchema.methods.generateAdminAuthToken = async function () {
 
 
 // hash password (before saving the user)
-adminSchema.pre('save', async function (next) {
-    const admin = this
-    if (admin.isModified('password')) {
-        admin.password = await bcrypt.hash(admin.password, 8)
-    }
-    next()
-})
+// adminSchema.pre('save', async function (next) {
+//     const admin = this
+//     if (admin.isModified('password')) {
+//         admin.password = await bcrypt.hash(admin.password, 8)
+//     }
+//     next()
+// })
 
 
 const adminModel = mongoose.model('Admin', adminSchema)
