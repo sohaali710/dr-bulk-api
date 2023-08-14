@@ -41,6 +41,7 @@ email : type String,      // admin@admin.com
 password : type String      // Admin123
 
 }
+
 - Change password
 
   method --> POST
