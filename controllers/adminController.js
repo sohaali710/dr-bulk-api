@@ -12,9 +12,10 @@ exports.login = asyncHandler(async (req, res, next) => {
     const admin = await Admin.findOne({ email })
     // const isMatch = await bcrypt.compare(password, admin.password)
     const isMatch = password === admin.password
+    console.log(password, admin.password)
 
     if (!admin || !isMatch) {
-        return next(new ApiError(400, "Incorrect email or password"))
+        next(new ApiError(400, "Wrong password or email"))
     }
 
     const token = await admin.generateAdminAuthToken()
@@ -22,7 +23,7 @@ exports.login = asyncHandler(async (req, res, next) => {
     res.status(201).json({ msg: 'ok', token })
 })
 
-// TODO  test changePassword on postman
+// TODO  test changePassword in postman
 exports.changePassword = asyncHandler(async (req, res, next) => {
     const { email, password, newPassword } = req.body;
 
@@ -31,12 +32,13 @@ exports.changePassword = asyncHandler(async (req, res, next) => {
     // const isMatch = await bcrypt.compareSync(password, admin.password)
     // if (!admin || !isMatch) {
     if (!admin || (password !== admin.password)) {
-        next(new ApiError(400, "wrong password or email"))
+        next(new ApiError(400, "Wrong password or email"))
     }
 
     // admin.password = await bcrypt.hash(newPassword, 8)
     admin.password = newPassword
+    const newToken = await admin.generateAdminAuthToken()
     await admin.save()
 
-    res.status(200).json({ msg: "ok" })
+    res.status(200).json({ msg: "ok", token: newToken })
 })
