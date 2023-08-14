@@ -11,7 +11,8 @@ const globalErrorHandling = require('./middlewares/errorHandlingMiddleware')
 
 const adminRoute = require('./routes/adminRoute')
 const userRoute = require('./routes/userRoute')
-// const categoryRoute = require('./routes/categoryRoute')
+const categoryRoute = require('./routes/categoryRoute')
+const productRoute = require('./routes/productRoute')
 
 const PORT = process.env.PORT
 
@@ -26,7 +27,8 @@ dbConnection()
 // Mount Routes
 app.use('/api/admins', adminRoute);
 app.use('/api/users', userRoute);
-// app.use('/api/categories', categoryRoute);
+app.use('/api/categories', categoryRoute);
+app.use('/api/products', productRoute);
 app.all("*", (req, res, next) => {
     next(new ApiError(400, `Can't find this route: ${req.originalUrl}`))
 })
