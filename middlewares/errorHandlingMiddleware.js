@@ -16,6 +16,9 @@ const globalErrorHandling = (err, req, res, next) => {
         if (err.name === 'TokenExpiredError') {
             err = new ApiError(401, 'Expired token. Please login again.')
         }
+        if (err.code === 11000) {
+            err = new ApiError(401, `This ${Object.keys(err.keyValue)[0]} is used before.`)
+        }
 
         sendErrorForProd(err, res)
     }
