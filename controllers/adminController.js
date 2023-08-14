@@ -23,7 +23,6 @@ exports.login = asyncHandler(async (req, res, next) => {
     res.status(201).json({ msg: 'ok', token })
 })
 
-// TODO  test changePassword in postman
 exports.changePassword = asyncHandler(async (req, res, next) => {
     const { email, password, newPassword } = req.body;
 
