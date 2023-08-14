@@ -1,13 +1,20 @@
 # Dr-Bulk-API
       
-### To run the server
-###### In the production mode :
+#### 1) To install packages :
+   
+```
+npm i
+```
+
+#### 2) To run the server
+
+In the production mode [frontend dev] :
 
 ```
 npm run prod
 ```
 
-###### In the development mode :
+In the development mode :
 
 ```
 npm run dev
@@ -29,9 +36,26 @@ http://localhost:5001/api/admins/login
 
 body {
 
-email : type String,
+email : type String,      // admin@admin.com
 
-password : type String  // Admin123
+password : type String      // Admin123
+
+}
+- Change password
+
+  method --> POST
+  
+```
+http://localhost:5001/api/admins/change-password
+```
+
+body {
+
+email : type String,      // admin@admin.com
+
+password : type String,      // old password
+
+newPassword : type String      // more than 8 chars & doesn't contain "password" word
 
 }
 
@@ -51,9 +75,9 @@ name : type String ,
       
 email : type String ,
       
-password : type String ,   // more than 8 chars & doesn't contain "password" word
+password : type String ,      // more than 8 chars & doesn't contain "password" word
       
-gender : type String ,     // "M" or "F"
+gender : type String ,      // "M" or "F"
       
 phoneNumber : type String
       
