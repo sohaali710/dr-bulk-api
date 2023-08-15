@@ -3,8 +3,9 @@ const router = new express.Router()
 
 const AdminAuth = require('../middlewares/adminAuth')
 const { login, changePassword } = require('../controllers/adminController')
+const { loginValidator, changePasswordValidator } = require('../utils/validators/adminValidator')
 
-router.post('/login', login)
-router.post('/change-password', AdminAuth, changePassword)
+router.post('/login', loginValidator, login)
+router.post('/change-password', changePasswordValidator, AdminAuth, changePassword)
 
 module.exports = router
