@@ -237,5 +237,3 @@ name : type String
 ```
 http://localhost:5001/api/products/:id
 ```
-
-<hr/>
