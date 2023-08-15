@@ -6,13 +6,6 @@ const User = require('../models/userModel')
 exports.signup = asyncHandler(async (req, res, next) => {
     const { name, email, password, gender, phoneNumber } = req.body
 
-    // validation
-    // const isSignedBefore = await User.findOne({ email: req.body.email })
-    // if (isSignedBefore) {
-    //     next(new ApiError(404, "This user email is already signed in"))
-    //     return;
-    // }
-
     const user = await User.create({
         name,
         email,
@@ -26,15 +19,14 @@ exports.signup = asyncHandler(async (req, res, next) => {
 
 exports.login = asyncHandler(async (req, res, next) => {
     const { email, password } = req.body
-
     // const user = await User.findByCredentials(email, password)
 
-    // const user = await User.findOne({ email })
+    const user = await User.findOne({ email })
     // const isMatch = await bcrypt.compare(password, user.password)
 
-    // if (!user || !isMatch) {
-    //     return next(new ApiError(404, "Incorrect email or password"))
-    // }
+    if (!user) {
+        return next(new ApiError(404, "Incorrect email or password"))
+    }
 
     const token = await user.generateAuthToken()
 
