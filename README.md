@@ -45,6 +45,7 @@ password : type String      // Admin123
 - Change password
 
   method --> POST
+  access --> Private [Admin]
   
 ```
 http://localhost:5001/api/admins/change-password
