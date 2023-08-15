@@ -2,7 +2,7 @@ const jwt = require("jsonwebtoken");
 const bcrypt = require('bcryptjs')
 const asyncHandler = require("express-async-handler");
 const Admin = require("../models/adminModel");
-const ApiError = require("../utils/ApiError");
+const ApiError = require("../utils/apiError");
 
 exports.login = asyncHandler(async (req, res, next) => {
     const { email, password } = req.body
@@ -10,11 +10,13 @@ exports.login = asyncHandler(async (req, res, next) => {
     // const admin = await Admin.findByCredentials(email, password)
 
     const admin = await Admin.findOne({ email })
+    if (!admin) {
+        next(new ApiError(400, "Wrong password or email"))
+    }
+
     // const isMatch = await bcrypt.compare(password, admin.password)
     const isMatch = password === admin.password
-    console.log(password, admin.password)
-
-    if (!admin || !isMatch) {
+    if (!isMatch) {
         next(new ApiError(400, "Wrong password or email"))
     }
 
@@ -27,10 +29,13 @@ exports.changePassword = asyncHandler(async (req, res, next) => {
     const { email, password, newPassword } = req.body;
 
     let admin = await Admin.findOne({ email })
+    if (!admin) {
+        next(new ApiError(400, "Wrong password or email"))
+    }
 
     // const isMatch = await bcrypt.compareSync(password, admin.password)
-    // if (!admin || !isMatch) {
-    if (!admin || (password !== admin.password)) {
+    const isMatch = password === admin.password
+    if (!isMatch) {
         next(new ApiError(400, "Wrong password or email"))
     }
 
