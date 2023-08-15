@@ -2,7 +2,7 @@ const jwt = require("jsonwebtoken");
 const bcrypt = require('bcryptjs')
 const asyncHandler = require("express-async-handler");
 const Admin = require("../models/adminModel");
-const ApiError = require("../utils/apiError");
+const ApiError = require("../utils/ApiError");
 
 exports.login = asyncHandler(async (req, res, next) => {
     const { email, password } = req.body
