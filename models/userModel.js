@@ -2,13 +2,14 @@ const mongoose = require('mongoose')
 const validator = require('validator')
 const bcrypt = require('bcryptjs')
 const jwt = require('jsonwebtoken')
-const APIError = require('../utils/apiError')
+const ApiError = require('../utils/ApiError')
 
 
 const userSchema = new mongoose.Schema({
     name: {
         type: String,
         required: true,
+        minLength: 2,
         trim: true
     },
     email: {
@@ -26,11 +27,11 @@ const userSchema = new mongoose.Schema({
         type: String,
         required: true,
         minLength: 8,
-        validate(value) {
-            if (value.toLowerCase().includes('password')) {
-                throw new Error('password musn\'t contain password word')
-            }
-        }
+        // validate(value) {
+        //     if (value.toLowerCase().includes('password')) {
+        //         throw new Error('password musn\'t contain password word')
+        //     }
+        // }
     },
     gender: {
         type: String,
@@ -38,7 +39,7 @@ const userSchema = new mongoose.Schema({
         required: true
     },
     phoneNumber: {
-        type: String,
+        type: Number,
         required: true
     },
     image: {
