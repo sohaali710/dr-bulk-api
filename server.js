@@ -6,7 +6,7 @@ const cors = require('cors');
 var app = express();
 
 const { dbConnection } = require('./db/mongoose');
-const ApiError = require('./utils/ApiError')
+// const ApiError = require('./utils/ApiError')
 const globalErrorHandling = require('./middlewares/errorHandlingMiddleware')
 
 const adminRoute = require('./routes/adminRoute')
@@ -30,7 +30,7 @@ app.use('/api/users', userRoute);
 app.use('/api/categories', categoryRoute);
 app.use('/api/products', productRoute);
 app.all("*", (req, res, next) => {
-    next(new ApiError(400, `Can't find this route: ${req.originalUrl}`))
+    // next(new ApiError(400, `Can't find this route: ${req.originalUrl}`))
 })
 
 // Global error handling middleware
