@@ -30,7 +30,9 @@ exports.getProductById = asyncHandler(async (req, res, next) => {
 })
 
 exports.createProduct = asyncHandler(async (req, res) => {
-    req.body.slug = slugify(req.body.title)
+    if (req.body.title) {
+        req.body.slug = slugify(req.body.title)
+    }
 
     const product = await Product.create(req.body)
 
@@ -39,7 +41,9 @@ exports.createProduct = asyncHandler(async (req, res) => {
 
 exports.updateProductById = asyncHandler(async (req, res, next) => {
     const { id } = req.params
-    req.body.slug = slugify(req.body.title)
+    if (req.body.title) {
+        req.body.slug = slugify(req.body.title)
+    }
 
     const product = await Product.findOneAndUpdate({ _id: id }, req.body, { new: true })
 
