@@ -1,6 +1,6 @@
 const asyncHandler = require('express-async-handler')
 const bcrypt = require('bcryptjs')
-const ApiError = require('../utils/ApiErrorHandling')
+const ApiError = require('../utils/ApiError')
 const User = require('../models/userModel')
 
 exports.signup = asyncHandler(async (req, res, next) => {

@@ -1,6 +1,6 @@
 const jwt = require('jsonwebtoken')
 const asyncHandler = require('express-async-handler')
-const ApiError = require('../utils/ApiErrorHandling')
+const ApiError = require('../utils/ApiError')
 const Admin = require('../models/adminModel')
 
 /**

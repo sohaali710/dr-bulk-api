@@ -6,7 +6,7 @@ const cors = require('cors');
 var app = express();
 
 const { dbConnection } = require('./db/mongoose');
-const ApiError = require('./utils/ApiErrorHandling')
+const ApiError = require('./utils/ApiError')
 const globalErrorHandling = require('./middlewares/errorHandlingMiddleware')
 
 const adminRoute = require('./routes/adminRoute')
