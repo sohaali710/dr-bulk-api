@@ -68,7 +68,7 @@ userSchema.methods.generateAuthToken = async function () {
 //     const isMatch = await bcrypt.compare(password, user.password)
 
 //     if (!user || !isMatch) {
-//         return next(new APIError("Incorrect email or password"))
+//         return next(new ApiError("Incorrect email or password"))
 //     }
 
 //     return user
