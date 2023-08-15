@@ -1,4 +1,4 @@
-const ApiError = require("../utils/ApiError")
+const ApiError = require("../utils/ApiErrorHandling")
 
 /**
  * @desc It's a middleware to handling errors

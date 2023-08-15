@@ -1,6 +1,6 @@
 const asyncHandler = require('express-async-handler')
 const slugify = require('slugify')
-const ApiError = require('../utils/ApiError')
+const ApiError = require('../utils/ApiErrorHandling')
 const Category = require('../models/categoryModel')
 
 

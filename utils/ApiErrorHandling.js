@@ -2,7 +2,7 @@
  * @desc This class is responsible about operational errors (error I can predict)
  */
 
-class ApiError extends Error {
+class ApiErrorHandling extends Error {
     constructor(statusCode, message) {
         super(message)
 
@@ -12,4 +12,4 @@ class ApiError extends Error {
     }
 }
 
-module.exports = ApiError
+module.exports = ApiErrorHandling
