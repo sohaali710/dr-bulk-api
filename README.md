@@ -83,7 +83,7 @@ password : type String ,      // should be combination of one uppercase , one lo
       
 gender : type String ,      // "M" or "F"
       
-phoneNumber : type String
+phoneNumber : type Number
       
 }
 
