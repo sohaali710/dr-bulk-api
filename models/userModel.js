@@ -51,18 +51,6 @@ userSchema.methods.generateAuthToken = async function () {
     return token
 }
 
-// check email and password in login route
-// userSchema.statics.findByCredentials = async (email, password) => {
-//     const user = await User.findOne({ email })
-//     const isMatch = await bcrypt.compare(password, user.password)
-
-//     if (!user || !isMatch) {
-//         return next(new ApiError("Incorrect email or password"))
-//     }
-
-//     return user
-// }
-
 // hash password (before saving the user)
 userSchema.pre('save', async function (next) {
     if (!this.isModified('password')) return next()
