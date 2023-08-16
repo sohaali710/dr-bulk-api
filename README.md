@@ -57,7 +57,7 @@ email : type String,      // admin@admin.com
 
 password : type String,      // old password
 
-newPassword : type String      // more than 8 chars & doesn't contain "password" word
+newPassword : type String      // should be combination of one uppercase , one lower case, one digit and min 8
 
 }
 
@@ -79,7 +79,7 @@ name : type String ,
       
 email : type String ,
       
-password : type String ,      // more than 8 chars & doesn't contain "password" word
+password : type String ,      // should be combination of one uppercase , one lower case, one digit and min 8
       
 gender : type String ,      // "M" or "F"
       
