@@ -7,18 +7,10 @@ const ApiError = require("../utils/ApiError");
 exports.login = asyncHandler(async (req, res, next) => {
     const { email, password } = req.body
 
-    // const admin = await Admin.findByCredentials(email, password)
-
     const admin = await Admin.findOne({ email })
     if (!admin) {
         next(new ApiError(401, "Wrong password or email"))
     }
-
-    // // const isMatch = await bcrypt.compare(password, admin.password)
-    // const isMatch = password === admin.password
-    // if (!isMatch) {
-    //     next(new ApiError(401, "Wrong password or email"))
-    // }
 
     const token = await admin.generateAdminAuthToken()
 
@@ -32,12 +24,6 @@ exports.changePassword = asyncHandler(async (req, res, next) => {
     if (!admin) {
         next(new ApiError(401, "Wrong password or email"))
     }
-
-    // const isMatch = await bcrypt.compareSync(password, admin.password)
-    // const isMatch = password === admin.password
-    // if (!isMatch) {
-    //     next(new ApiError(401, "Wrong password or email"))
-    // }
 
     // admin.password = await bcrypt.hash(newPassword, 8)
     admin.password = newPassword

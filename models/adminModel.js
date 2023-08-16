@@ -38,26 +38,6 @@ adminSchema.methods.generateAdminAuthToken = async function () {
     return token
 }
 
-
-// check email and password in login route
-// adminSchema.statics.findByCredentials = async (email, password) => {
-//     const admin = await Admin.findOne({ email })
-
-//     if (!admin) {
-//         //when throw an error, it trigger the catch block in admin route
-//         throw new Error('Unable to log in')
-//     }
-
-//     const isMatch = await bcrypt.compare(password, admin.password)
-
-//     if (!isMatch) {
-//         throw new Error('Unable to login')
-//     }
-
-//     return admin
-// }
-
-
 // hash password (before saving the user)
 // adminSchema.pre('save', async function (next) {
 //     const admin = this
