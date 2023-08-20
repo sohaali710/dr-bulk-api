@@ -83,7 +83,7 @@ password : type String ,      // should be combination of one uppercase , one lo
       
 gender : type String ,      // "M" or "F"
       
-phoneNumber : type String
+phoneNumber : type Number
       
 }
 
@@ -176,16 +176,30 @@ http://localhost:5001/api/categories/:id
   method --> GET
   
 ```
-http://localhost:5001/api/products
+http://localhost:5001/api/products?page={Number}&limit={Number}
 ```
 
-// It's an optional feature to handle pagination. By default page=1, limit=20 (if you don't send params).
+// by default page=1, limit=20 (if you don't send params using route : http://localhost:5000/admin/students)
 
-params {
+response on success
 
-page : type Number, // page number
+{
 
-limit : type Number // number of products per page
+results: Number,    // number of students per page (less than or equal limit)
+
+pagination: {      // to handle pagination feature (to divide data into pages)
+
+currentPage: Number,
+
+limit: Number,      // max number of students per page
+
+numberOfPages: Number
+
+},
+                
+data: [
+products data per page
+]
 
 }
 
