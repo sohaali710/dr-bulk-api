@@ -221,9 +221,19 @@ http://localhost:5001/api/products/:id
 http://localhost:5001/api/products
 ```
 
-body {
+body {      // all data is required unless points
 
-name : type String 
+title: type String,
+
+category: type String,
+
+description: type String,
+
+price: type Number,
+
+points: type Number,
+
+images: type Array
   
 }
 
@@ -251,4 +261,28 @@ name : type String
   
 ```
 http://localhost:5001/api/products/:id
+```
+
+- Add product images 
+
+  method --> POST
+  
+  access --> Private [Admin]
+  
+```
+http://localhost:5001/api/products/add-img/:id
+```
+
+body {
+images: type Array
+}
+
+- Remove product image
+
+  method --> DELETE
+  
+  access --> Private [Admin]
+  
+```
+http://localhost:5001/api/products/remove-img/:id
 ```
