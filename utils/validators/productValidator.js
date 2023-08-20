@@ -1,4 +1,5 @@
 const { check } = require('express-validator')
+const slugify = require('slugify')
 const validatorMiddleware = require('../../middlewares/validatorMiddleware')
 const Category = require('../../models/categoryModel')
 
@@ -35,7 +36,7 @@ exports.createProductValidator = [
     check('points')
         .optional(),
     // check('imageCover')
-    //     .notEmpty().withMessage('Product imageCover is required'),
+    //     .notEmpty().withMessage('Product cover image is required'),
     check('images')
         .optional()
         .isArray().withMessage('Images should be array of string'),
@@ -49,15 +50,27 @@ exports.getProductValidator = [
 
 exports.updateProductValidator = [
     check('id').isMongoId().withMessage('Invalid product id format'),
-    check('name')
+    check('title')
         .custom((val, { req }) => {
-            req.body.slug = slugify(val)
+            if (val) {
+                req.body.slug = slugify(val)
+            }
             return true
         }),
     validatorMiddleware
 ]
 
 exports.deleteProductValidator = [
+    check('id').isMongoId().withMessage('Invalid product id format'),
+    validatorMiddleware
+]
+
+exports.addProductImgValidator = [
+    check('id').isMongoId().withMessage('Invalid product id format'),
+    validatorMiddleware
+]
+
+exports.removeProductImgValidator = [
     check('id').isMongoId().withMessage('Invalid product id format'),
     validatorMiddleware
 ]

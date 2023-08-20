@@ -27,12 +27,13 @@ const productSchema = new mongoose.Schema({
     points: {
         type: Number
     },
-    //     imageCover:{
-    //         type:String,
-    //         required:[true,"Product imageCover is required"]
+    // imageCover: {
+    //     type: String,
+    //     required: [true, "Product imageCover is required"]
     // },
     images: {
-        type: [String]
+        type: [String],
+        required: [true, "Product images is required"]
     },
     slug: {
         type: String,

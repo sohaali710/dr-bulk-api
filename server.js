@@ -1,7 +1,8 @@
-var express = require('express');
+var express = require('express')
 const morgan = require('morgan')
 const dotenv = require('dotenv')
 dotenv.config({ path: '.env' })
+const multer = require('multer')
 const cors = require('cors');
 var app = express();
 
@@ -20,6 +21,11 @@ const PORT = process.env.PORT
 app.use(express.json())
 app.use(express.static('public'))//to mention express that the frontend (static files) are in public folder
 app.use(cors())
+
+if (process.env.NODE_ENV === 'development') {
+    app.use(morgan('dev'))
+    console.log(`mode: ${process.env.NODE_ENV}`)
+}
 
 // Connect with database
 dbConnection()
