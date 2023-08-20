@@ -225,7 +225,7 @@ body {      // all data is required unless points
 
 title: type String,
 
-category: type String,
+category: type ObjectId, // category id
 
 description: type String,
 
