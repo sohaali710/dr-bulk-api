@@ -44,7 +44,7 @@ exports.createProduct = asyncHandler(async (req, res, next) => {
     let { title, slug, category, description, price, points, images } = req.body
 
     if (!req.files[0]) {
-        next(new ApiError(400, 'Images not found'))
+        next(new ApiError(400, 'Images required. Please upload at least one image.'))
     }
 
     images = []
