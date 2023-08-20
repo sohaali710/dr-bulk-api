@@ -19,8 +19,12 @@ exports.login = asyncHandler(async (req, res, next) => {
 
 exports.changePassword = asyncHandler(async (req, res, next) => {
     const { email, password, newPassword } = req.body;
+    // TODO It's better to use the req.user instead of email to get admin data
+    // const {userId}=req.user
+    // const { password, newPassword } = req.body;
 
     let admin = await Admin.findOne({ email })
+    // let admin = await Admin.findById(id)
     if (!admin) {
         next(new ApiError(401, "Wrong password or email"))
     }
