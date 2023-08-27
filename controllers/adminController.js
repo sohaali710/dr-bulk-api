@@ -19,7 +19,9 @@ exports.login = asyncHandler(async (req, res, next) => {
 
 exports.changePassword = asyncHandler(async (req, res, next) => {
     const { email, password, newPassword } = req.body;
-    // TODO It's better to use the req.user instead of email to get admin data
+
+    // TODO : better to use --> confirmPassword + req.user
+    // const { email, password, newPassword,confirmPassword } = req.body;
     // const {userId}=req.user
     // const { password, newPassword } = req.body;
 
