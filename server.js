@@ -9,11 +9,13 @@ var app = express();
 const { dbConnection } = require('./db/mongoose');
 const ApiError = require('./utils/ApiError')
 const globalErrorHandling = require('./middlewares/errorHandlingMiddleware')
+const upload = require('./middlewares/fileUpload')
 
 const adminRoute = require('./routes/adminRoute')
 const userRoute = require('./routes/userRoute')
 const categoryRoute = require('./routes/categoryRoute')
 const productRoute = require('./routes/productRoute')
+const instructorRoute = require('./routes/instructorRoute')
 
 const PORT = process.env.PORT
 
@@ -30,11 +32,18 @@ if (process.env.NODE_ENV === 'development') {
 // Connect with database
 dbConnection()
 
+// file upload
+app.post('/api/products', upload.array('images'))
+app.post('/api/products/add-img/:id', upload.array('images'))
+
+// app.post('/api/instructors/add-img/:id', upload.single('image'))
+
 // Mount Routes
 app.use('/api/admins', adminRoute);
 app.use('/api/users', userRoute);
 app.use('/api/categories', categoryRoute);
 app.use('/api/products', productRoute);
+app.use('/api/instructors', instructorRoute);
 app.all("*", (req, res, next) => {
     next(new ApiError(400, `Can't find this route: ${req.originalUrl}`))
 })
