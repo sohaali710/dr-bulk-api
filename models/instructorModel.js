@@ -2,16 +2,32 @@ const mongoose = require('mongoose')
 
 const instructorSchema = new mongoose.Schema({
     name: {
-        type: String,
-        required: [true, "Instructor name is required"],
-        unique: [true, "Instructor name is unique"],
-        minLength: 2,
-        trim: true
+        en: {
+            type: String,
+            required: [true, "En instructor name is required"],
+            unique: [true, "En instructor name is unique"],
+            minLength: 2,
+            trim: true
+        },
+        ar: {
+            type: String,
+            required: [true, "Ar instructor name is required"],
+            unique: [true, "Ar instructor name is unique"],
+            minLength: 2,
+            trim: true
+        }
     },
     bio: {
-        type: String,
-        require: [true, "Instructor bio is required"],
-        minlength: [10, 'Too short product description'],
+        en: {
+            type: String,
+            require: [true, "En bio is required"],
+            minlength: [10, 'Too short En bio'],
+        },
+        ar: {
+            type: String,
+            require: [true, "Ar bio is required"],
+            minlength: [10, 'Too short Ar bio'],
+        }
     },
     phoneNumber: {
         type: Number,
