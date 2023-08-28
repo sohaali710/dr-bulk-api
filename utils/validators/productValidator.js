@@ -9,13 +9,19 @@ const Category = require('../../models/categoryModel')
 
 exports.createProductValidator = [
     check('title')
-        .notEmpty().withMessage('Product title is required')
-        .isLength({ min: 3 }).withMessage('Too short product title')
-        .isLength({ max: 32 }).withMessage('Too long product title')
+        .isObject().withMessage('Product title must be an object'),
+    check('title.en')
+        .notEmpty().withMessage('En Product title is required')
+        .isLength({ min: 3 }).withMessage('Too short En product title')
+        .isLength({ max: 32 }).withMessage('Too long En product title')
         .custom((val, { req }) => {
             req.body.slug = slugify(val)
             return true
         }),
+    check('title.ar')
+        .notEmpty().withMessage('Ar Product title is required')
+        .isLength({ min: 3 }).withMessage('Too short Ar product title')
+        .isLength({ max: 32 }).withMessage('Too long Ar product title'),
     check('category')
         .notEmpty().withMessage('Product must be belong to category')
         .isMongoId().withMessage('Invalid id format')
@@ -27,8 +33,13 @@ exports.createProductValidator = [
             })
         ),
     check('description')
-        .notEmpty().withMessage('Product description is required')
-        .isLength({ min: 10 }).withMessage('Too short product description'),
+        .isObject().withMessage('Product description must be an object'),
+    check('description.en')
+        .notEmpty().withMessage('En description is required')
+        .isLength({ min: 10 }).withMessage('Too short En description'),
+    check('description.ar')
+        .notEmpty().withMessage('Ar description is required')
+        .isLength({ min: 10 }).withMessage('Too short Ar description'),
     check('price')
         .notEmpty().withMessage('Product price is required')
         .isNumeric().withMessage('Price should be a number')
@@ -50,7 +61,7 @@ exports.getProductValidator = [
 
 exports.updateProductValidator = [
     check('id').isMongoId().withMessage('Invalid product id format'),
-    check('title')
+    check('title.en')
         .custom((val, { req }) => {
             if (val) {
                 req.body.slug = slugify(val)
