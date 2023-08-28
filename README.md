@@ -236,11 +236,23 @@ http://localhost:5001/api/products
 
 body {      // all data is required unless points
 
-title: type String,
+title : {
+
+en: type String,
+
+ar: type String
+
+},
 
 category: type ObjectId, // category id
 
-description: type String,
+description: {
+
+en: type String,
+
+ar: type String
+
+},
 
 price: type Number,
 
@@ -259,12 +271,6 @@ images: type Array
 ```
 http://localhost:5001/api/products/:id
 ```
-
-body {
-
-name : type String 
-  
-}
 
 - Delete product
 
@@ -333,9 +339,22 @@ http://localhost:5001/api/instructors
 
 body {
 
-name: type String,
+name : {
 
-bio: type String, 
+en: type String,
+
+ar: type String
+
+},
+
+bio : 
+name : {
+
+en: type String,
+
+ar: type String
+
+}, 
 
 phoneNumber: type Number
   
