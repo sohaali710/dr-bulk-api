@@ -25,18 +25,18 @@ exports.getCategoryById = asyncHandler(async (req, res, next) => {
 exports.createCategory = asyncHandler(async (req, res) => {
     const { name, slug } = req.body
 
-    const category = await Category.create({ name, slug: slugify(name) })
+    const category = await Category.create({ name, slug })
 
     res.status(201).json({ data: category })
 })
 
 exports.updateCategoryById = asyncHandler(async (req, res, next) => {
-    const { name } = req.body
+    const { name, slug } = req.body
     const { id } = req.params
 
     const category = await Category.findOneAndUpdate(
         { _id: id },
-        { name, slug: slugify(name) },
+        { name, slug },
         { new: true } //to return the category after update (the new one)
     )
 

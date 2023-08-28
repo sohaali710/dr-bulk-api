@@ -9,12 +9,19 @@ const validatorMiddleware = require('../../middlewares/validatorMiddleware')
 exports.createCategoryValidator = [
     check('name')
         .notEmpty().withMessage('Category name is required')
-        .isLength({ min: 3 }).withMessage('Too short category name')
-        .isLength({ max: 32 }).withMessage('Too long category name')
+        .isObject().withMessage('Category name must be an object'),
+    check('name.en')
+        .notEmpty().withMessage("En category name is required")
+        .isLength({ min: 3 }).withMessage('En category must be unique')
+        .isLength({ max: 32 }).withMessage('Too short en category name')
         .custom((val, { req }) => {
             req.body.slug = slugify(val)
             return true
         }),
+    check('name.ar')
+        .notEmpty().withMessage("Ar Category name is required")
+        .isLength({ min: 3 }).withMessage('Ar Category must be unique')
+        .isLength({ max: 32 }).withMessage('Too short ar category name'),
     validatorMiddleware
 ]
 
@@ -28,10 +35,20 @@ exports.updateCategoryValidator = [
     check('id')
         .isMongoId().withMessage('Invalid category id format'),
     check('name')
+        .notEmpty().withMessage('Category name is required')
+        .isObject().withMessage('Category name must be an object'),
+    check('name.en')
+        .notEmpty().withMessage("En category name is required")
+        .isLength({ min: 3 }).withMessage('En category must be unique')
+        .isLength({ max: 32 }).withMessage('Too short en category name')
         .custom((val, { req }) => {
             req.body.slug = slugify(val)
             return true
         }),
+    check('name.ar')
+        .notEmpty().withMessage("Ar Category name is required")
+        .isLength({ min: 3 }).withMessage('Ar Category must be unique')
+        .isLength({ max: 32 }).withMessage('Too short ar category name'),
     validatorMiddleware
 ]
 
