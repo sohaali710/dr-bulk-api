@@ -3,11 +3,20 @@ const ObjectID = mongoose.Schema.Types.ObjectId
 
 const productSchema = new mongoose.Schema({
     title: {
-        type: String,
-        require: [true, "Product name is required"],
-        unique: [true, 'Product must be unique'],
-        minlength: [3, 'Too short product name'],
-        trim: true
+        en: {
+            type: String,
+            require: [true, "En Product name is required"],
+            unique: [true, 'En Product must be unique'],
+            minlength: [3, 'Too short en product name'],
+            trim: true
+        },
+        ar: {
+            type: String,
+            require: [true, "Ar Product name is required"],
+            unique: [true, 'Ar Product must be unique'],
+            minlength: [3, 'Too short ar product name'],
+            trim: true
+        }
     },
     category: {
         type: ObjectID,
@@ -15,9 +24,16 @@ const productSchema = new mongoose.Schema({
         required: [true, "Product must be belong to category"]
     },
     description: {
-        type: String,
-        require: [true, "Product description is required"],
-        minlength: [10, 'Too short product description'],
+        en: {
+            type: String,
+            require: [true, "En description is required"],
+            minlength: [10, 'Too short en product description'],
+        },
+        ar: {
+            type: String,
+            require: [true, "Ar description is required"],
+            minlength: [10, 'Too short ar description'],
+        }
     },
     price: {
         type: Number,
