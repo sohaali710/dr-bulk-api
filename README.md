@@ -136,7 +136,13 @@ http://localhost:5001/api/categories
 
 body {
 
-name : type String 
+name : {
+
+en: type String,
+
+ar: type String
+
+}
   
 }
 
@@ -150,9 +156,16 @@ name : type String
 http://localhost:5001/api/categories/:id
 ```
 
+
 body {
 
-name : type String 
+name : {
+
+en: type String,
+
+ar: type String
+
+}
   
 }
 
