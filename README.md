@@ -299,3 +299,65 @@ images: type Array
 ```
 http://localhost:5001/api/products/remove-img/:id
 ```
+
+<hr/>
+
+
+### Instructors
+
+- Get all instructors
+
+  method --> GET
+  
+```
+http://localhost:5001/api/instructors
+```
+
+- Get specific instructor by id
+
+  method --> GET
+  
+```
+http://localhost:5001/api/instructors/:id
+```
+
+- Add new instructor
+
+  method --> POST
+  
+  access --> Private [Admin]
+  
+```
+http://localhost:5001/api/instructors
+```
+
+body {
+
+name: type String,
+
+bio: type String, 
+
+phoneNumber: type Number
+  
+}
+
+- Update instructor
+
+  method --> PUT
+  
+  access --> Private [Admin]
+  
+```
+http://localhost:5001/api/instructors/:id
+```
+
+
+- Delete instructor
+
+  method --> DELETE
+  
+  access --> Private [Admin]
+  
+```
+http://localhost:5001/api/instructors/:id
+```
