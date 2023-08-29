@@ -347,8 +347,7 @@ ar: type String
 
 },
 
-bio : 
-name : {
+bio : {
 
 en: type String,
 
