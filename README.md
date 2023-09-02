@@ -45,6 +45,7 @@ password : type String      // Admin123
 - Change password
 
   method --> POST
+  
   access --> Private [Admin]
   
 ```
