@@ -27,7 +27,7 @@ app.use(cors())
 dbConnection()
 
 // file upload
-app.post('/api/products', upload.array('images'))
+app.post('/api/products', upload.any('images'),(err,req,res,next)=>{})
 app.post('/api/products/add-img/:id', upload.array('images'))
 
 // app.post('/api/instructors/add-img/:id', upload.single('image'))
