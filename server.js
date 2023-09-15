@@ -15,6 +15,7 @@ const userRoute = require('./routes/userRoute')
 const categoryRoute = require('./routes/categoryRoute')
 const productRoute = require('./routes/productRoute')
 const instructorRoute = require('./routes/instructorRoute')
+const membershipRoute = require('./routes/membership')
 
 const PORT = process.env.PORT
 
@@ -38,6 +39,8 @@ app.use('/api/users', userRoute);
 app.use('/api/categories', categoryRoute);
 app.use('/api/products', productRoute);
 app.use('/api/instructors', instructorRoute);
+app.use('/api/memberships', membershipRoute);
+
 app.all("*", (req, res, next) => {
     next(new ApiError(400, `Can't find this route: ${req.originalUrl}`))
 })
