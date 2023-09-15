@@ -3,7 +3,9 @@ const slugify = require('slugify')
 const ApiError = require('../utils/ApiError')
 const Membership = require('../models/membership')
 
-
+/**
+ * @Desc : Memberships CRUD
+ */
 exports.addMembership = asyncHandler(async (req, res, next) => {
     let { title, duration, type, price, description, points, image, slug } = req.body
     image = image ? req.files[0] : undefined
@@ -41,7 +43,6 @@ exports.getMemberships = asyncHandler(async (req, res) => {
         data: memberships
     })
 })
-
 exports.getMembershipById = asyncHandler(async (req, res, next) => {
     const { id } = req.params
     const membership = await Membership.findById(id)
