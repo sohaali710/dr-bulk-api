@@ -380,3 +380,85 @@ http://localhost:5001/api/instructors/:id
 ```
 http://localhost:5001/api/instructors/:id
 ```
+
+<hr/>
+
+
+### Memberships
+
+- Get all memberships
+
+  method --> GET
+  
+```
+/api/memberships
+```
+
+- Get specific membership by id
+
+  method --> GET
+  
+```
+/api/memberships/:id
+```
+
+- Add new membership
+
+  method --> POST
+  
+  access --> Private [Admin]
+  
+```
+/api/memberships
+```
+
+body {
+
+title : {
+
+en: type String,
+
+ar: type String
+
+},
+
+description : {
+
+en: type String,
+
+ar: type String
+
+}, 
+
+duration: type String,
+
+price: type String,
+
+type: type String,  // should be one of these options: Normal, Bronze or Gold
+
+points: type String,
+
+image: type String  // optional
+  
+}
+
+- Update membership
+
+  method --> PUT
+  
+  access --> Private [Admin]
+  
+```
+/api/memberships/:id
+```
+
+
+- Delete membership
+
+  method --> DELETE
+  
+  access --> Private [Admin]
+  
+```
+/api/memberships/:id
+```
