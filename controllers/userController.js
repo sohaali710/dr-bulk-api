@@ -19,8 +19,7 @@ exports.signup = asyncHandler(async (req, res, next) => {
         points: 10
     })
 
-    // sendEmail(email, "/../views/verify_email.ejs")
-    sendEmail('sohaali710@gmail', user.verifyEmailCode, user._id, "/../views/verify_email.ejs")
+    sendEmail(email, user.verifyEmailCode, user._id, "/../views/verify_email.ejs")
     res.status(201).json({ msg: 'ok' })
 })
 
