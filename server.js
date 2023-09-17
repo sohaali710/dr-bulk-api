@@ -16,6 +16,7 @@ const categoryRoute = require('./routes/categoryRoute')
 const productRoute = require('./routes/productRoute')
 const instructorRoute = require('./routes/instructorRoute')
 const membershipRoute = require('./routes/membership')
+const bookMembershipRoute = require('./routes/bookMembership')
 
 const PORT = process.env.PORT
 
@@ -28,7 +29,7 @@ app.use(cors())
 dbConnection()
 
 // file upload
-app.post('/api/products', upload.any('images'),(err,req,res,next)=>{})
+app.post('/api/products', upload.any('images'), (err, req, res, next) => { })
 app.post('/api/products/add-img/:id', upload.array('images'))
 
 // app.post('/api/instructors/add-img/:id', upload.single('image'))
@@ -40,6 +41,7 @@ app.use('/api/categories', categoryRoute);
 app.use('/api/products', productRoute);
 app.use('/api/instructors', instructorRoute);
 app.use('/api/memberships', membershipRoute);
+app.use('/api/book-membership', bookMembershipRoute);
 
 app.all("*", (req, res, next) => {
     next(new ApiError(400, `Can't find this route: ${req.originalUrl}`))
