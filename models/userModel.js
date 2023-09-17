@@ -3,7 +3,6 @@ const bcrypt = require('bcryptjs')
 const jwt = require('jsonwebtoken')
 const ApiError = require('../utils/ApiError')
 
-
 const userSchema = new mongoose.Schema({
     name: {
         type: String,
@@ -34,6 +33,15 @@ const userSchema = new mongoose.Schema({
     image: {
         type: String,
         default: undefined
+    },
+    verifyEmailCode: String,
+    verified: {
+        type: Boolean,
+        default: false
+    },
+    points: {
+        type: Number,
+        min: 0
     }
 }, {
     timestamps: true
