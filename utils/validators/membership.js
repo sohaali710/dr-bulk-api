@@ -1,5 +1,4 @@
 const { check } = require('express-validator')
-const slugify = require('slugify')
 const validatorMiddleware = require('../../middlewares/validatorMiddleware')
 
 /**
@@ -12,11 +11,7 @@ exports.addMembershipValidator = [
     check('title.en')
         .notEmpty().withMessage('En title is required')
         .isLength({ min: 3 }).withMessage('Too short En title')
-        .isLength({ max: 32 }).withMessage('Too long En title')
-        .custom((val, { req }) => {
-            req.body.slug = slugify(val)
-            return true
-        }),
+        .isLength({ max: 32 }).withMessage('Too long En title'),
     check('title.ar')
         .notEmpty().withMessage('Ar title is required')
         .isLength({ min: 3 }).withMessage('Too short Ar title')
@@ -41,8 +36,7 @@ exports.addMembershipValidator = [
         .optional()
         .isNumeric({ min: 0 }).withMessage('Points should be a number'),
     check('image')
-        .optional()
-        .isArray().withMessage('Image should be array of string'),
+        .optional(),
     validatorMiddleware
 ]
 
@@ -58,11 +52,7 @@ exports.updateMembershipValidator = [
     check('title.en')
         .notEmpty().withMessage('En title is required')
         .isLength({ min: 3 }).withMessage('Too short En title')
-        .isLength({ max: 32 }).withMessage('Too long En title')
-        .custom((val, { req }) => {
-            req.body.slug = slugify(val)
-            return true
-        }),
+        .isLength({ max: 32 }).withMessage('Too long En title'),
     check('title.ar')
         .notEmpty().withMessage('Ar title is required')
         .isLength({ min: 3 }).withMessage('Too short Ar title')
