@@ -87,8 +87,7 @@ exports.updateMembershipValidator = [
         .optional()
         .isNumeric({ min: 0 }).withMessage('Points should be a number'),
     check('image')
-        .optional()
-        .isArray().withMessage('Image should be array of string'),
+        .optional(),
     validatorMiddleware
 ]
 
