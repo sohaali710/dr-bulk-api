@@ -434,7 +434,7 @@ duration: type String,
 
 price: type String,
 
-type: type String,  // should be one of these options: Normal, Bronze or Gold
+type: type String,  // should be one of these options: Normal, Silver or Gold
 
 points: type String,
 
