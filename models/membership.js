@@ -36,7 +36,7 @@ const membershipSchema = new mongoose.Schema({
     type: {
         type: String,
         required: true,
-        enum: ['Normal', 'Bronze', 'Gold']
+        enum: ['Normal', 'Silver', 'Gold']
     },
     price: {
         type: Number,
@@ -47,7 +47,7 @@ const membershipSchema = new mongoose.Schema({
         type: Number,
         min: 0
     },
-    image: String
+    // image: String
 }, {
     timestamps: true
 })

@@ -7,8 +7,8 @@ const Membership = require('../models/membership')
  * @Desc : Memberships CRUD
  */
 exports.addMembership = asyncHandler(async (req, res, next) => {
-    let { title, duration, type, price, description, points, image, slug } = req.body
-    image = image ? req.files[0] : undefined
+    let { title, duration, type, price, description, points } = req.body
+    // image = image ? req.files[0] : undefined
 
     const membership = await Membership.create({
         title,
@@ -17,10 +17,8 @@ exports.addMembership = asyncHandler(async (req, res, next) => {
         type,
         description,
         points,
-        image,
-        slug,
+        // image
     })
-    console.log(membership)
 
     res.status(201).json({ data: membership })
 })
