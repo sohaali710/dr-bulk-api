@@ -5,7 +5,7 @@ const { signupValidator, loginValidator } = require('../utils/validators/userVal
 
 
 router.post('/signup', signupValidator, signup)
-router.post('/verify-email-code/:code/:id', verifyEmailCode)
+router.get('/verify-email-code/:code/:id', verifyEmailCode)
 router.post('/login', loginValidator, login)
 
 
