@@ -35,9 +35,9 @@ exports.verifyEmailCode = asyncHandler(async (req, res, next) => {
     }
 
     user.verified = true
-    await user.save
+    await user.save()
 
-    return res.status(200).redirect("https://dr-bulk.netlify.app/login")
+    return res.status(200).redirect("https://dr-bulk.netlify.app")
 })
 
 exports.login = asyncHandler(async (req, res, next) => {
