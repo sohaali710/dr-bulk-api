@@ -1,5 +1,4 @@
 const asyncHandler = require('express-async-handler')
-const slugify = require('slugify')
 const ApiError = require('../utils/ApiError')
 const Membership = require('../models/membership')
 
