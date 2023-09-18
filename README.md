@@ -394,6 +394,14 @@ http://localhost:5001/api/instructors/:id
 /api/memberships
 ```
 
+- Get all VIP memberships (private training)
+
+  method --> GET
+  
+```
+/api/memberships/VIP/private-training
+```
+
 - Get specific membership by id
 
   method --> GET
@@ -434,7 +442,7 @@ duration: type String,
 
 price: type String,
 
-type: type String,  // should be one of these options: Normal, Silver or Gold
+type: type String,  // should be one of these options: Normal, Silver, Gold, Diamond or VIP. // VIP is the private training memberships
 
 points: type String,
 
