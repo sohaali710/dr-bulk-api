@@ -1,7 +1,7 @@
 const express = require('express')
 const router = express.Router()
 const { addMembershipValidator, getMembershipValidator, updateMembershipValidator, deleteMembershipValidator } = require('../utils/validators/membership')
-const { getMemberships, addMembership, getMembershipById, updateMembershipById, deleteMembershipById, removeMembershipImg, addMembershipImg } = require('../controllers/membership')
+const { getMemberships, getVIPMemberships, addMembership, getMembershipById, updateMembershipById, deleteMembershipById } = require('../controllers/membership')
 const AdminAuth = require('../middlewares/adminAuth')
 
 router
@@ -14,7 +14,6 @@ router.route('/:id')
     .put(updateMembershipValidator, AdminAuth, updateMembershipById)
     .delete(deleteMembershipValidator, AdminAuth, deleteMembershipById)
 
-// router.post('/add-img/:id', addMembershipImgValidator, AdminAuth, addMembershipImg)
-// router.delete('/remove-img/:id', removeMembershipImgValidator, AdminAuth, removeMembershipImg)
+router.get('/VIP/private-training', getVIPMemberships)
 
 module.exports = router

@@ -28,7 +28,7 @@ exports.addMembershipValidator = [
         .notEmpty().withMessage('Duration is required'),
     check('type')
         .notEmpty().withMessage('Type is required')
-        .isIn(['Normal', 'Silver', 'Gold']).withMessage("Type should be one of these options: Normal, Silver or Gold"),
+        .isIn(['Normal', 'Silver', 'Gold','Diamond','VIP']).withMessage("Type should be one of these options: Normal, Silver, Gold ,Diamond or VIP"),
     check('price')
         .notEmpty().withMessage('price is required')
         .isNumeric({ min: 0 }).withMessage('Price should be positive number'),
@@ -69,7 +69,7 @@ exports.updateMembershipValidator = [
         .notEmpty().withMessage('Duration is required'),
     check('type')
         .notEmpty().withMessage('Type is required')
-        .isIn(['Normal', 'Silver', 'Gold']).withMessage("Type should be one of these options: Normal, Silver or Gold"),
+        .isIn(['Normal', 'Silver', 'Gold','Diamond','VIP']).withMessage("Type should be one of these options: Normal, Silver, Gold ,Diamond or VIP"),
     check('price')
         .notEmpty().withMessage('price is required')
         .isNumeric({ min: 0 }).withMessage('Price should be positive number'),

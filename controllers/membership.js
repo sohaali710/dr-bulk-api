@@ -40,6 +40,15 @@ exports.getMemberships = asyncHandler(async (req, res) => {
         data: memberships
     })
 })
+/** VIP Memberships from Dr Bulk [private training] */
+exports.getVIPMemberships = asyncHandler(async (req, res) => {
+    const VIPMemberships = await Membership.find({ type: 'VIP' })
+    console.log(VIPMemberships)
+
+    res.status(200).json({
+        data: VIPMemberships
+    })
+})
 exports.getMembershipById = asyncHandler(async (req, res, next) => {
     const { id } = req.params
     const membership = await Membership.findById(id)

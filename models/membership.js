@@ -36,7 +36,7 @@ const membershipSchema = new mongoose.Schema({
     type: {
         type: String,
         required: true,
-        enum: ['Normal', 'Silver', 'Gold']
+        enum: ['Normal', 'Silver', 'Gold','Diamond','VIP']
     },
     price: {
         type: Number,
