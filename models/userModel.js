@@ -30,10 +30,10 @@ const userSchema = new mongoose.Schema({
         type: Number,
         required: true
     },
-    image: {
-        type: String,
-        default: undefined
-    },
+    // image: {
+    //     type: String,
+    //     default: undefined
+    // },
     verifyEmailCode: String,
     verified: {
         type: Boolean,
