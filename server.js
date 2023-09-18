@@ -29,10 +29,10 @@ app.use(cors())
 dbConnection()
 
 // file upload
-app.post('/api/products', upload.any('images'), (err, req, res, next) => { })
-app.post('/api/products/add-img/:id', upload.array('images'))
-
-// app.post('/api/instructors/add-img/:id', upload.single('image'))
+app.post('/api/products', upload.any('images'), (err, req, res, next) => { })// add product
+app.post('/api/products/add-img/:id', upload.array('images')) // add img
+app.post('/api/instructors/', upload.single('image')) // add
+app.put('/api/instructors/:id', upload.single('image'))// update
 
 // Mount Routes
 app.use('/api/admins', adminRoute);

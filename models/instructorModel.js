@@ -29,18 +29,8 @@ const instructorSchema = new mongoose.Schema({
             minlength: [10, 'Too short Ar bio'],
         }
     },
-    phoneNumber: {
-        type: Number,
-        required: true
-    },
-    // image: {
-    //     type: String,
-    //     default: undefined
-    // },
-    slug: {
-        type: String,
-        lowercase: true
-    }
+    phoneNumber: Number,
+    image: String
 }, {
     timestamps: true
 })
