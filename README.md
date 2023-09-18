@@ -88,6 +88,14 @@ phoneNumber : type Number
       
 }
 
+- Verify User Email
+
+  method --> GET
+  
+```
+http://localhost:5001/api/users/verify-email-code/:code/:id
+```
+
 - User login
 
   method --> POST
