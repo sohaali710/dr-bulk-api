@@ -364,7 +364,9 @@ ar: type String
 
 }, 
 
-phoneNumber: type Number
+phoneNumber: type Number, // optional
+
+image: type String // optional
   
 }
 
@@ -452,9 +454,7 @@ price: type String,
 
 type: type String,  // should be one of these options: Normal, Silver, Gold, Diamond or VIP. // VIP is the private training memberships
 
-points: type String,
-
-image: type String  // optional
+points: type String
   
 }
 
@@ -477,4 +477,84 @@ image: type String  // optional
   
 ```
 /api/memberships/:id
+```
+
+<hr/>
+
+
+### EatSmart
+
+- Get all eatSmart Schedules
+
+  method --> GET
+  
+```
+/api/eat-smart
+```
+
+- Get specific eatSmart by id
+
+  method --> GET
+  
+```
+/api/eat-smart/:id
+```
+
+- Add new eatSmart schedule
+
+  method --> POST
+  
+  access --> Private [Admin]
+  
+```
+/api/eat-smart
+```
+
+body {
+
+title : {
+
+en: type String,
+
+ar: type String
+
+},
+
+description : {
+
+en: type String,
+
+ar: type String
+
+}, 
+
+duration: type String,
+
+price: type String,
+
+type: type String,  // should be one of these options: Weekly or Monthly
+
+points: type String
+  
+}
+
+- Update eatSmart
+
+  method --> PUT
+  
+  access --> Private [Admin]
+  
+```
+/api/eat-smart/:id
+```
+
+
+- Delete eatSmart
+
+  method --> DELETE
+  
+  access --> Private [Admin]
+  
+```
+/api/eat-smart/:id
 ```
