@@ -6,7 +6,7 @@ const Instructor = require('../models/instructorModel')
 exports.addInstructor = asyncHandler(async (req, res, next) => {
     const { name, bio, phoneNumber } = req.body
     let image = req.body.image
-    image = image ? req.files[0] : undefined
+    image = req.files ? req.files[0] : undefined
 
     const instructor = await Instructor.create({
         name,
