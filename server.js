@@ -17,6 +17,7 @@ const productRoute = require('./routes/productRoute')
 const instructorRoute = require('./routes/instructorRoute')
 const membershipRoute = require('./routes/membership')
 const bookMembershipRoute = require('./routes/bookMembership')
+const eatSmartRoute = require('./routes/eatSmart')
 
 const PORT = process.env.PORT
 
@@ -42,6 +43,7 @@ app.use('/api/products', productRoute);
 app.use('/api/instructors', instructorRoute);
 app.use('/api/memberships', membershipRoute);
 app.use('/api/book-membership', bookMembershipRoute);
+app.use('/api/eat-smart', eatSmartRoute);
 
 app.all("*", (req, res, next) => {
     next(new ApiError(400, `Can't find this route: ${req.originalUrl}`))
