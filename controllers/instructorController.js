@@ -20,7 +20,8 @@ exports.addInstructor = asyncHandler(async (req, res, next) => {
 exports.updateInstructorById = asyncHandler(async (req, res, next) => {
     const { id } = req.params
 
-    const updatedData = {...req.body , image : req.file.path}
+    
+    const updatedData = req.file ? {...req.body , image : req.file.path} : {...req.body }
     const instructor = await Instructor.findOneAndUpdate({ _id: id }, updatedData , { new: true })
     if (!instructor) {
         return next(new ApiError(404, `No instructor for this id ${id}`))
