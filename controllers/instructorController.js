@@ -6,7 +6,6 @@ const Instructor = require('../models/instructorModel')
 exports.addInstructor = asyncHandler(async (req, res, next) => {
     const { name, bio, phoneNumber } = req.body
     let image = req.body.image
-    console.log(req.file);
     image = req.file ? req.file.path : undefined
 
     const instructor = await Instructor.create({
@@ -21,7 +20,8 @@ exports.addInstructor = asyncHandler(async (req, res, next) => {
 exports.updateInstructorById = asyncHandler(async (req, res, next) => {
     const { id } = req.params
 
-    const instructor = await Instructor.findOneAndUpdate({ _id: id }, req.body, { new: true })
+    const updatedData = {...req.body , image : req.file.path}
+    const instructor = await Instructor.findOneAndUpdate({ _id: id }, updatedData , { new: true })
     if (!instructor) {
         return next(new ApiError(404, `No instructor for this id ${id}`))
     }
