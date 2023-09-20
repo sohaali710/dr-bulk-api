@@ -15,3 +15,7 @@ exports.bookMembershipValidator = [
     validatorMiddleware
 ]
 
+exports.getBookingByIdValidator = [
+    check('id').isMongoId().withMessage('Invalid id format'),
+    validatorMiddleware
+]
