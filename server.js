@@ -14,6 +14,7 @@ const adminRoute = require('./routes/adminRoute')
 const userRoute = require('./routes/userRoute')
 const categoryRoute = require('./routes/categoryRoute')
 const productRoute = require('./routes/productRoute')
+const orderRoute = require('./routes/order')
 const instructorRoute = require('./routes/instructorRoute')
 const membershipRoute = require('./routes/membership')
 const bookMembershipRoute = require('./routes/bookMembership')
@@ -40,6 +41,7 @@ app.use('/api/admins', adminRoute);
 app.use('/api/users', userRoute);
 app.use('/api/categories', categoryRoute);
 app.use('/api/products', productRoute);
+app.use('/api/orders', orderRoute);
 app.use('/api/instructors', instructorRoute);
 app.use('/api/memberships', membershipRoute);
 app.use('/api/book-membership', bookMembershipRoute);
