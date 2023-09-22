@@ -112,6 +112,16 @@ password : type String
   
 }
 
+- Get all users
+
+  method --> GET
+  
+  access --> Private [Admin]
+  
+```
+http://localhost:5001/api/users/all-users
+```
+
 
 <hr/>
 
