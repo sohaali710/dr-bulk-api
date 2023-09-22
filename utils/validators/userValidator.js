@@ -60,3 +60,9 @@ exports.loginValidator = [
         .notEmpty().withMessage('Password is required'),
     validatorMiddleware
 ]
+
+exports.verifyEmailCodeValidator = [
+    check('id').isMongoId().withMessage('Invalid category id format'),
+    check('code').isNumeric().withMessage('code should be a number'),
+    validatorMiddleware
+]
