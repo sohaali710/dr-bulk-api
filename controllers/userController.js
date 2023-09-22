@@ -5,7 +5,9 @@ const User = require('../models/userModel')
 const sendEmail = require('../utils/sendEmail')
 const generateCode = require('../utils/generateCode')
 
-
+/**
+ * @Desc : User Registration
+ */
 exports.signup = asyncHandler(async (req, res, next) => {
     const { name, email, password, gender, phoneNumber } = req.body
 
@@ -22,7 +24,6 @@ exports.signup = asyncHandler(async (req, res, next) => {
     sendEmail(email, user.verifyEmailCode, user._id, "/../views/verify_email.ejs")
     res.status(201).json({ msg: 'ok' })
 })
-
 exports.verifyEmailCode = asyncHandler(async (req, res, next) => {
     const { id, code } = req.params
 
@@ -39,7 +40,6 @@ exports.verifyEmailCode = asyncHandler(async (req, res, next) => {
 
     return res.status(200).redirect("https://dr-bulk.netlify.app")
 })
-
 exports.login = asyncHandler(async (req, res, next) => {
     const { email, password } = req.body
 
@@ -55,4 +55,12 @@ exports.login = asyncHandler(async (req, res, next) => {
     const token = await user.generateAuthToken()
 
     res.status(201).json({ msg: 'ok', token })
+})
+
+/**
+ * @Desc : User CRUD [with admin auth]
+ */
+exports.getAllUsers = asyncHandler(async (req, res, next) => {
+    const allUsers = await User.find({})
+    res.status(200).json({ result: allUsers.length, data: allUsers })
 })
