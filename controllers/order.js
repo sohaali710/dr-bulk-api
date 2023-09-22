@@ -24,6 +24,7 @@ exports.createOrder = asyncHandler(async (req, res, next) => {
 })
 exports.getAllOrders = asyncHandler(async (req, res) => {
     const orders = await Order.find({})
+        .populate({ path: "userId", select: "email" })
 
     res.status(200).json({
         results: orders.length,
@@ -49,6 +50,7 @@ exports.getUserOrders = asyncHandler(async (req, res) => {
 exports.getOrderById = asyncHandler(async (req, res, next) => {
     const { id } = req.params
     const order = await Order.findById(id)
+        .populate({ path: "userId", select: "email" })
 
     if (!order) {
         return next(new ApiError(404, `No order for this id ${id}`))
