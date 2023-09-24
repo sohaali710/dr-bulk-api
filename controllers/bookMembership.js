@@ -13,11 +13,11 @@ exports.bookMembership = asyncHandler(async (req, res, next) => {
         return next(new ApiError(404, `No user for this id ${id}`))
     }
 
-    const exist = await BookMembership.findOne({ userId })
-    console.log(exist)
-    if (exist) {
-        return next(new ApiError(404, `This user already has membership.`))
-    }
+    // const exist = await BookMembership.findOne({ userId })
+    // console.log(exist)
+    // if (exist) {
+    //     return next(new ApiError(404, `This user already has membership.`))
+    // }
 
     const booking = await BookMembership.create({
         membershipId,
