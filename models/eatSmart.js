@@ -35,8 +35,7 @@ const eatSmartSchema = new mongoose.Schema({
     },
     type: {
         type: String,
-        required: true,
-        enum: ['Weekly', 'Monthly']
+        required: true
     },
     price: {
         type: Number,
