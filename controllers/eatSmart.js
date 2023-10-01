@@ -7,7 +7,6 @@ const EatSmart = require('../models/eatSmart')
  */
 exports.addEatSmart = asyncHandler(async (req, res, next) => {
     let { title, duration, type, price, description, points } = req.body
-    // image = image ? req.files[0] : undefined
 
     const eatSmart = await EatSmart.create({
         title,

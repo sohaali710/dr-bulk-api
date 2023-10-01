@@ -27,8 +27,8 @@ exports.addEatSmartValidator = [
     check('duration')
         .notEmpty().withMessage('Duration is required'),
     check('type')
-        .notEmpty().withMessage('Type is required')
-        .isIn(['Weekly', 'Monthly']).withMessage("Type should be one of these options: Weekly or Monthly"),
+        .notEmpty().withMessage('Type is required'),
+    // .isIn(['Weekly', 'Monthly']).withMessage("Type should be one of these options: Weekly or Monthly"),
     check('price')
         .notEmpty().withMessage('price is required')
         .isNumeric({ min: 0 }).withMessage('Price should be positive number'),
@@ -68,8 +68,8 @@ exports.updateEatSmartValidator = [
     check('duration')
         .notEmpty().withMessage('Duration is required'),
     check('type')
-        .notEmpty().withMessage('Type is required')
-        .isIn(['Weekly', 'Monthly']).withMessage("Type should be one of these options: Weekly or Monthly"),
+        .notEmpty().withMessage('Type is required'),
+    // .isIn(['Weekly', 'Monthly']).withMessage("Type should be one of these options: Weekly or Monthly"),
     check('price')
         .notEmpty().withMessage('price is required')
         .isNumeric({ min: 0 }).withMessage('Price should be positive number'),
