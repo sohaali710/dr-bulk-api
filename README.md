@@ -64,7 +64,7 @@ newPassword : type String      // should be combination of one uppercase , one l
 
 <hr/>
 
-### Ediotr
+### Editor
 
 - Login
 
@@ -209,7 +209,7 @@ ar: type String
 
   method --> PUT
   
-  access --> Private [Admin]
+  access --> Private [Admin or Editor]
   
 ```
 http://localhost:5001/api/categories/:id
@@ -325,7 +325,7 @@ images: type Array
 
   method --> PUT
   
-  access --> Private [Admin]
+  access --> Private [Admin or Editor]
   
 ```
 http://localhost:5001/api/products/:id
@@ -424,7 +424,7 @@ image: type String // optional
 
   method --> PUT
   
-  access --> Private [Admin]
+  access --> Private [Admin or Editor]
   
 ```
 http://localhost:5001/api/instructors/:id
@@ -512,7 +512,7 @@ points: type String
 
   method --> PUT
   
-  access --> Private [Admin]
+  access --> Private [Admin or Editor]
   
 ```
 /api/memberships/:id
@@ -592,7 +592,7 @@ points: type String
 
   method --> PUT
   
-  access --> Private [Admin]
+  access --> Private [Admin or Editor]
   
 ```
 /api/eat-smart/:id
