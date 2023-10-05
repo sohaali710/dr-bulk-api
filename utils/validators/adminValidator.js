@@ -17,8 +17,8 @@ exports.loginValidator = [
                 return Promise.reject(new Error("Incorrect email or password"))
             }
 
-            // const isMatch = await bcrypt.compare(req.body.password, admin.password)
-            const isMatch = req.body.password === admin.password
+            const isMatch = await bcrypt.compare(req.body.password, admin.password)
+            // const isMatch = req.body.password === admin.password
             if (!isMatch) {
                 return Promise.reject(new Error("Incorrect email or password"))
             }
@@ -37,8 +37,8 @@ exports.changePasswordValidator = [
                 return Promise.reject(new Error("Incorrect email or password"))
             }
 
-            // const isMatch = await bcrypt.compare(req.body.password, admin.password)
-            const isMatch = req.body.password === admin.password
+            const isMatch = await bcrypt.compare(req.body.password, admin.password)
+            // const isMatch = req.body.password === admin.password
             if (!isMatch) {
                 return Promise.reject(new Error("Incorrect email or password"))
             }

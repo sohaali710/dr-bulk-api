@@ -28,15 +28,15 @@ const adminSchema = new mongoose.Schema({
 
 
 // generate token method
-adminSchema.methods.generateAdminAuthToken = async function () {
-    const admin = this //syntax sugar
-    const token = jwt.sign({ userId: admin._id.toString(), role: 'admin' }, process.env.JWT_SECRET, {
-        expiresIn: process.env.JWT_EXPIRE_TIME
-    })
+// adminSchema.methods.generateAdminAuthToken = async function () {
+//     const admin = this //syntax sugar
+//     const token = jwt.sign({ userId: admin._id.toString(), role: 'admin' }, process.env.JWT_SECRET, {
+//         expiresIn: process.env.JWT_EXPIRE_TIME
+//     })
 
-    await admin.save()
-    return token
-}
+//     await admin.save()
+//     return token
+// }
 
 // hash password (before saving the user)
 // adminSchema.pre('save', async function (next) {

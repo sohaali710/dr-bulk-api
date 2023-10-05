@@ -11,6 +11,7 @@ const globalErrorHandling = require('./middlewares/errorHandlingMiddleware')
 const upload = require('./middlewares/fileUpload')
 
 const adminRoute = require('./routes/adminRoute')
+const editorRoute = require('./routes/editorRoute')
 const userRoute = require('./routes/userRoute')
 const categoryRoute = require('./routes/categoryRoute')
 const productRoute = require('./routes/productRoute')
@@ -38,6 +39,7 @@ app.put('/api/instructors/:id', upload.single('image'))// update
 
 // Mount Routes
 app.use('/api/admins', adminRoute);
+app.use('/api/editors', editorRoute);
 app.use('/api/users', userRoute);
 app.use('/api/categories', categoryRoute);
 app.use('/api/products', productRoute);
