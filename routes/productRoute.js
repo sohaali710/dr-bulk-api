@@ -3,6 +3,7 @@ const router = express.Router()
 const { getProductValidator, createProductValidator, updateProductValidator, deleteProductValidator, removeProductImgValidator, addProductImgValidator } = require('../utils/validators/productValidator')
 const { getProducts, createProduct, getProductById, updateProductById, deleteProductById, removeProductImg, addProductImg } = require('../controllers/productController')
 const AdminAuth = require('../middlewares/adminAuth')
+const EditorAdminAuth = require('../middlewares/editorAdminAuth')
 
 router
     .route('/')
@@ -11,7 +12,7 @@ router
 
 router.route('/:id')
     .get(getProductValidator, getProductById)
-    .put(updateProductValidator, AdminAuth, updateProductById)
+    .put(updateProductValidator, EditorAdminAuth, updateProductById)
     .delete(deleteProductValidator, AdminAuth, deleteProductById)
 
 router.post('/add-img/:id', addProductImgValidator, AdminAuth, addProductImg)
