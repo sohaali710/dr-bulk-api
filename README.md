@@ -64,6 +64,46 @@ newPassword : type String      // should be combination of one uppercase , one l
 
 <hr/>
 
+### Ediotr
+
+- Login
+
+  method --> POST
+  
+```
+http://localhost:5001/api/editors/login
+```
+
+body {
+
+email : type String,      // editor@bulk.com
+
+password : type String      // Editor123
+
+}
+
+- Change password
+
+  method --> POST
+  
+  access --> Private [Editor]
+  
+```
+http://localhost:5001/api/editors/change-password
+```
+
+body {
+
+email : type String,      // editor@bulk.com
+
+password : type String,      // old password
+
+newPassword : type String      // should be combination of one uppercase , one lower case, one digit and min 8
+
+}
+
+<hr/>
+
 ### User
 
 - User signup
