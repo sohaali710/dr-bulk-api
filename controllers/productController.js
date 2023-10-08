@@ -120,3 +120,16 @@ exports.removeProductImg = asyncHandler(async (req, res, next) => {
 
     res.status(200).json({ images: product.images })
 })
+
+/** Access by Editor */
+exports.editorUpdateProduct = asyncHandler(async (req, res, next) => {
+    const { id } = req.params
+    let { title, slug, category, description, points } = req.body
+
+    const product = await Product.findOneAndUpdate({ _id: id }, { title, slug, category, description, points }, { new: true })
+    if (!product) {
+        return next(new ApiError(404, `No product for this id ${id}`))
+    }
+
+    res.status(200).json({ data: product })
+})

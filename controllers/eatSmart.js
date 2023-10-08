@@ -71,6 +71,19 @@ exports.deleteEatSmartById = asyncHandler(async (req, res, next) => {
     res.status(204).send()
 })
 
+/** Access by Editor */
+exports.editorUpdateEatSmart = asyncHandler(async (req, res, next) => {
+    const { id } = req.params
+    const { title, duration, type, description, points } = req.body
+
+    const eatSmart = await EatSmart.findOneAndUpdate({ _id: id }, { title, duration, type, description, points }, { new: true })
+    if (!eatSmart) {
+        return next(new ApiError(404, `No eatSmart for this id ${id}`))
+    }
+
+    res.status(200).json({ data: eatSmart })
+})
+
 // TODO : test it on postman
 // exports.addEatSmartImg = asyncHandler(async (req, res, next) => {
 //     const { id } = req.params
