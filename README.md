@@ -535,7 +535,7 @@ points: type String
   access --> Private [Editor]
   
 ```
-/api/memberships/:id
+/api/memberships/editor/:id
 ```
 
 
