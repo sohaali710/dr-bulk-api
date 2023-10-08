@@ -325,11 +325,22 @@ images: type Array
 
   method --> PUT
   
-  access --> Private [Admin or Editor]
+  access --> Private [Admin]
   
 ```
 http://localhost:5001/api/products/:id
 ```
+
+- Editor Update product
+
+  method --> PUT
+  
+  access --> Private [Editor]
+  
+```
+http://localhost:5001/api/products/editor/:id
+```
+
 
 - Delete product
 
@@ -430,7 +441,6 @@ image: type String // optional
 http://localhost:5001/api/instructors/:id
 ```
 
-
 - Delete instructor
 
   method --> DELETE
@@ -512,7 +522,17 @@ points: type String
 
   method --> PUT
   
-  access --> Private [Admin or Editor]
+  access --> Private [Admin]
+  
+```
+/api/memberships/:id
+```
+
+- Editor Update membership
+
+  method --> PUT
+  
+  access --> Private [Editor]
   
 ```
 /api/memberships/:id
@@ -592,10 +612,20 @@ points: type String
 
   method --> PUT
   
-  access --> Private [Admin or Editor]
+  access --> Private [Admin]
   
 ```
 /api/eat-smart/:id
+```
+
+- Editor Update eatSmart
+
+  method --> PUT
+  
+  access --> Private [Editor]
+  
+```
+/api/eat-smart/editor/:id
 ```
 
 
