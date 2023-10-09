@@ -64,6 +64,46 @@ newPassword : type String      // should be combination of one uppercase , one l
 
 <hr/>
 
+### Editor
+
+- Login
+
+  method --> POST
+  
+```
+http://localhost:5001/api/editors/login
+```
+
+body {
+
+email : type String,      // editor@bulk.com
+
+password : type String      // Editor123
+
+}
+
+- Change password
+
+  method --> POST
+  
+  access --> Private [Editor]
+  
+```
+http://localhost:5001/api/editors/change-password
+```
+
+body {
+
+email : type String,      // editor@bulk.com
+
+password : type String,      // old password
+
+newPassword : type String      // should be combination of one uppercase , one lower case, one digit and min 8
+
+}
+
+<hr/>
+
 ### User
 
 - User signup
@@ -169,7 +209,7 @@ ar: type String
 
   method --> PUT
   
-  access --> Private [Admin]
+  access --> Private [Admin or Editor]
   
 ```
 http://localhost:5001/api/categories/:id
@@ -291,6 +331,17 @@ images: type Array
 http://localhost:5001/api/products/:id
 ```
 
+- Editor Update product
+
+  method --> PUT
+  
+  access --> Private [Editor]
+  
+```
+http://localhost:5001/api/products/editor/:id
+```
+
+
 - Delete product
 
   method --> DELETE
@@ -384,12 +435,11 @@ image: type String // optional
 
   method --> PUT
   
-  access --> Private [Admin]
+  access --> Private [Admin or Editor]
   
 ```
 http://localhost:5001/api/instructors/:id
 ```
-
 
 - Delete instructor
 
@@ -478,6 +528,16 @@ points: type String
 /api/memberships/:id
 ```
 
+- Editor Update membership
+
+  method --> PUT
+  
+  access --> Private [Editor]
+  
+```
+/api/memberships/editor/:id
+```
+
 
 - Delete membership
 
@@ -556,6 +616,16 @@ points: type String
   
 ```
 /api/eat-smart/:id
+```
+
+- Editor Update eatSmart
+
+  method --> PUT
+  
+  access --> Private [Editor]
+  
+```
+/api/eat-smart/editor/:id
 ```
 
 
