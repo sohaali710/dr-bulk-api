@@ -664,7 +664,7 @@ points: type String
 
 body {
 
-title : {
+drBulkSpotlit : {
 
 en: type String,
 
