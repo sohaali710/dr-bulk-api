@@ -638,3 +638,49 @@ points: type String
 ```
 /api/eat-smart/:id
 ```
+
+<hr/>
+
+
+### About
+
+- Get about
+
+  method --> GET
+  
+```
+/api/about
+```
+
+- Add about
+
+  method --> POST
+  
+  access --> Private [Admin or Editor]
+  
+```
+/api/about
+```
+
+body {
+
+title : {
+
+en: type String,
+
+ar: type String
+
+},
+
+gymAbout : {
+
+en: type String,
+
+ar: type String
+
+},
+
+image: String // optional
+  
+}
+
