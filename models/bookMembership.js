@@ -12,10 +12,7 @@ const bookMembershipSchema = new mongoose.Schema({
         ref: 'Membership',
         require: true
     },
-    startsAt: {
-        type: Date,
-        require: true
-    },
+    startsAt: Date,
     paymentMethod: {
         type: String,
         require: true

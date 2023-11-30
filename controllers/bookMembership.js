@@ -5,7 +5,7 @@ const User = require('../models/userModel')
 
 
 exports.bookMembership = asyncHandler(async (req, res, next) => {
-    let { membershipId, startsAt, paymentMethod } = req.body
+    let { membershipId, startsAt = new Date(), paymentMethod } = req.body
     const userId = req.user.userId
     console.log(req.user)
     const user = await User.findById(userId)
