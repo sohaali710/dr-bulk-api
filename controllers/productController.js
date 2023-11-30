@@ -9,9 +9,18 @@ exports.getProducts = asyncHandler(async (req, res) => {
     const limit = +req.query.limit || 20 // max number of items (students) per page
     const skip = (page - 1) * limit
 
-    const productsPerPage = await Product.find({})
+    /** filter by date */
+    // const { startDate = new Date('2000-01-01'), endDate = new Date() } = req.query
+
+    const productsPerPage = await Product.find({
+        // createdAt: {
+        //     $gte: startDate,
+        //     $lte: endDate
+        // }
+    })
         .skip(skip)
         .limit(limit)
+        .sort({ createdAt: -1 })
         .populate({ path: "category", select: "name" })
     // .populate({ path: "category", select: "name -_id" })
 
