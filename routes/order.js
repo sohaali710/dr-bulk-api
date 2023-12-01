@@ -10,11 +10,12 @@ router
     .get(AdminAuth, getAllOrders)
     .post(createOrderValidator, Auth, createOrder)
 
+router.route('/user-orders')
+    .get(Auth, getUserOrders)
+
 router.route('/:id')
     .get(getOrderByIdValidator, getOrderById)
 
-router.route('/user-orders')
-    .get(Auth, getUserOrders)
 
 
 module.exports = router

@@ -10,10 +10,11 @@ router
     .get(AdminAuth, getAllBookings)
     .post(bookMembershipValidator, Auth, bookMembership)
 
+router.route('/user-booking')
+    .get(Auth, getUserBookings)
+
 router.route('/:id')
     .get(getBookingByIdValidator, getBookingById)
 
-router.route('/user-booking')
-    .get(Auth, getUserBookings)
 
 module.exports = router
