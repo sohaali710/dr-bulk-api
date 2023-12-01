@@ -1,8 +1,8 @@
 const express = require('express')
 const router = express.Router()
-const { bookMembershipValidator, getAllBookingsValidator, getBookingByIdValidator } = require('../utils/validators/bookMembership')
+const { bookMembershipValidator, getBookingByIdValidator } = require('../utils/validators/bookMembership')
 const Auth = require('../middlewares/auth')
-const { bookMembership, getAllBookings, getBookingById } = require('../controllers/bookMembership')
+const { bookMembership, getAllBookings, getBookingById, getUserBookings } = require('../controllers/bookMembership')
 const AdminAuth = require('../middlewares/adminAuth')
 
 router
@@ -13,5 +13,7 @@ router
 router.route('/:id')
     .get(getBookingByIdValidator, getBookingById)
 
+router.route('/user-booking')
+    .get(Auth, getUserBookings)
 
 module.exports = router

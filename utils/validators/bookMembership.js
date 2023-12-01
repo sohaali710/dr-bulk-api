@@ -8,7 +8,7 @@ const validatorMiddleware = require('../../middlewares/validatorMiddleware')
 
 exports.bookMembershipValidator = [
     check('membershipId').isMongoId().withMessage('Invalid id format')
-        .notEmpty().withMessage('membership is required'),
+        .notEmpty().withMessage('membershipId is required'),
     check('startsAt').default(new Date())
         .isISO8601().toDate().withMessage('startsAt should be Date format'),
     check('paymentMethod').notEmpty().withMessage('paymentMethod is required'),

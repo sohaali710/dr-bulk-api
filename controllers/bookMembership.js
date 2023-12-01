@@ -49,3 +49,13 @@ exports.getBookingById = asyncHandler(async (req, res, next) => {
 
     res.status(200).json({ data: booking })
 })
+
+exports.getUserBookings = asyncHandler(async (req, res) => {
+    const userId = req.user.userId
+    const books = await BookMembership.find({ userId })
+
+    res.status(200).json({
+        results: books.length,
+        data: books
+    })
+})
