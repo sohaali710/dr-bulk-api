@@ -13,11 +13,11 @@ exports.bookEatSmart = asyncHandler(async (req, res, next) => {
         return next(new ApiError(404, `No user for this id ${id}`))
     }
 
-    const exist = await BookEatSmart.findOne({ userId })
-    console.log(exist)
-    if (exist) {
-        return next(new ApiError(404, `This user already has eatSmart.`))
-    }
+    // const exist = await BookEatSmart.findOne({ userId })
+    // console.log(exist)
+    // if (exist) {
+    //     return next(new ApiError(404, `This user already has eatSmart.`))
+    // }
 
     const booking = await BookEatSmart.create({
         eatSmartId,
