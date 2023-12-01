@@ -20,6 +20,7 @@ const instructorRoute = require('./routes/instructorRoute')
 const membershipRoute = require('./routes/membership')
 const bookMembershipRoute = require('./routes/bookMembership')
 const eatSmartRoute = require('./routes/eatSmart')
+const bookEatSmartRoute = require('./routes/bookEatSmart')
 const aboutRoute = require('./routes/aboutRoute')
 
 const PORT = process.env.PORT
@@ -49,6 +50,7 @@ app.use('/api/instructors', instructorRoute);
 app.use('/api/memberships', membershipRoute);
 app.use('/api/book-membership', bookMembershipRoute);
 app.use('/api/eat-smart', eatSmartRoute);
+app.use('/api/book-eat-smart', bookEatSmartRoute);
 app.use('/api/about', aboutRoute);
 
 app.all("*", (req, res, next) => {
