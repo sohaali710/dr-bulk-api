@@ -684,3 +684,169 @@ image: String // optional
   
 }
 
+
+<hr/>
+
+
+### Orders
+
+- Create order
+
+  method --> POST
+  
+  access --> Private [User]
+  
+```
+/api/orders
+```
+
+body {
+
+items: [ // type Array of objects
+
+{
+        
+productId: type ObjectId,
+            
+quantity: type Number
+            
+}
+        
+],
+
+bill: type Number,
+
+paymentMethod: type String // 'COD' (cash on delivery) or 'CC' (credit card or pay online)
+
+}
+
+
+- Get Orders
+
+  method --> GET
+  access --> Private [Admin]
+  
+```
+/api/orders
+```
+
+- Get User Orders
+
+  method --> GET
+  access --> Private [User]
+  
+```
+/api/orders/user-orders
+```
+
+- Get Order By Id
+
+  method --> GET
+  
+```
+/api/orders/:id
+```
+
+
+<hr/>
+
+
+### Book Membership
+
+- User book membership
+
+  method --> POST
+  
+  access --> Private [User]
+  
+```
+/api/book-membership
+```
+
+body {
+
+membershipId: type ObjectId,
+
+startsAt: type Date, // default = at time of booking
+
+paymentMethod: type String // 'COD' (cash on delivery) or 'CC' (credit card or pay online)
+
+}
+
+
+- Get membership bookings
+
+  method --> GET
+  access --> Private [Admin]
+  
+```
+/api/book-membership
+```
+
+- Get User membership
+
+  method --> GET
+  access --> Private [User]
+  
+```
+/api/book-membership/user-booking
+```
+
+- Get membership booking By Id
+
+  method --> GET
+  
+```
+/api/book-membership/:id
+```
+
+
+<hr/>
+
+
+### Book Eat Smart Plan
+
+- User book Eat Smart Plan
+
+  method --> POST
+  
+  access --> Private [User]
+  
+```
+/api/book-eat-smart
+```
+
+body {
+
+eatSmartId: type ObjectId,
+
+paymentMethod: type String // 'COD' (cash on delivery) or 'CC' (credit card or pay online)
+
+}
+
+
+- Get eat smart bookings
+
+  method --> GET
+  access --> Private [Admin]
+  
+```
+/api/book-eat-smart
+```
+
+- Get User eat smart plan
+
+  method --> GET
+  access --> Private [User]
+  
+```
+/api/book-eat-smart/user-booking
+```
+
+- Get eat smart booking By Id
+
+  method --> GET
+  
+```
+/api/book-eat-smart/:id
+```
