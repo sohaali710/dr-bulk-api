@@ -30,7 +30,7 @@ exports.bookEatSmart = asyncHandler(async (req, res, next) => {
     res.status(200).json({ msg: 'ok', data: booking })
 })
 exports.getAllBookings = asyncHandler(async (req, res) => {
-    const books = await BookEatSmart.find({}).populate({ path: "userId", select: "email" })
+    const books = await BookEatSmart.find({}).populate({ path: "userId", select: "email phoneNumber name" })
 
     res.status(200).json({
         results: books.length,

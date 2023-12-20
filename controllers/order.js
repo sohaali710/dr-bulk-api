@@ -24,7 +24,7 @@ exports.createOrder = asyncHandler(async (req, res, next) => {
 })
 exports.getAllOrders = asyncHandler(async (req, res) => {
     const orders = await Order.find({})
-        .populate({ path: "userId", select: "email" })
+        .populate({ path: "userId", select: "email phoneNumber name" })
 
     res.status(200).json({
         results: orders.length,

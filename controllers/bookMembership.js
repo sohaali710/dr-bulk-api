@@ -31,7 +31,7 @@ exports.bookMembership = asyncHandler(async (req, res, next) => {
 })
 exports.getAllBookings = asyncHandler(async (req, res) => {
     const books = await BookMembership.find({})
-        .populate({ path: "userId", select: "email" })
+        .populate({ path: "userId", select: "email phoneNumber name" })
 
     res.status(200).json({
         results: books.length,
