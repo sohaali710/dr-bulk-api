@@ -31,7 +31,13 @@ exports.bookMembership = asyncHandler(async (req, res, next) => {
 })
 exports.getAllBookings = asyncHandler(async (req, res) => {
     const books = await BookMembership.find({})
-        .populate({ path: "userId", select: "email phoneNumber name" })
+        .populate([
+            {
+                path: "userId", select: "email phoneNumber name"
+            }, {
+                path: "membershipId", select: "title"
+            }
+        ])
 
     res.status(200).json({
         results: books.length,
@@ -41,7 +47,13 @@ exports.getAllBookings = asyncHandler(async (req, res) => {
 exports.getBookingById = asyncHandler(async (req, res, next) => {
     const { id } = req.params
     const booking = await BookMembership.findById(id)
-        .populate({ path: "userId", select: "email" })
+        .populate([
+            {
+                path: "userId", select: "email phoneNumber name"
+            }, {
+                path: "membershipId", select: "title"
+            }
+        ])
 
     if (!booking) {
         return next(new ApiError(404, `No membership booking for this id ${id}`))
@@ -53,6 +65,7 @@ exports.getBookingById = asyncHandler(async (req, res, next) => {
 exports.getUserBookings = asyncHandler(async (req, res) => {
     const userId = req.user.userId
     const books = await BookMembership.find({ userId })
+        .populate({ path: "membershipId" })
 
     res.status(200).json({
         results: books.length,

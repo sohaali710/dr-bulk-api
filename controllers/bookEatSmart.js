@@ -30,7 +30,14 @@ exports.bookEatSmart = asyncHandler(async (req, res, next) => {
     res.status(200).json({ msg: 'ok', data: booking })
 })
 exports.getAllBookings = asyncHandler(async (req, res) => {
-    const books = await BookEatSmart.find({}).populate({ path: "userId", select: "email phoneNumber name" })
+    const books = await BookEatSmart.find({})
+        .populate([
+            {
+                path: "userId", select: "email phoneNumber name"
+            }, {
+                path: "eatSmartId", select: "title"
+            }
+        ])
 
     res.status(200).json({
         results: books.length,
@@ -40,6 +47,13 @@ exports.getAllBookings = asyncHandler(async (req, res) => {
 exports.getBookingById = asyncHandler(async (req, res, next) => {
     const { id } = req.params
     const booking = await BookEatSmart.findById(id)
+        .populate([
+            {
+                path: "userId", select: "email phoneNumber name"
+            }, {
+                path: "eatSmartId", select: "title"
+            }
+        ])
 
     if (!booking) {
         return next(new ApiError(404, `No eatSmart booking for this id ${id}`))
@@ -51,6 +65,7 @@ exports.getBookingById = asyncHandler(async (req, res, next) => {
 exports.getUserBookings = asyncHandler(async (req, res) => {
     const userId = req.user.userId
     const books = await BookEatSmart.find({ userId })
+        .populate({ path: "eatSmartId" })
 
     res.status(200).json({
         results: books.length,
