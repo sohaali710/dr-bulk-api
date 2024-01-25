@@ -7,7 +7,6 @@ const User = require('../models/userModel')
 exports.bookMembership = asyncHandler(async (req, res, next) => {
     const { membershipId, startsAt, paymentMethod } = req.body
     const userId = req.user.userId
-    console.log(req.user)
     const user = await User.findById(userId)
     if (!user) {
         return next(new ApiError(404, `No user for this id ${id}`))
@@ -25,7 +24,6 @@ exports.bookMembership = asyncHandler(async (req, res, next) => {
         startsAt,
         paymentMethod
     })
-    console.log(booking)
 
     res.status(200).json({ msg: 'ok', data: booking })
 })
@@ -38,6 +36,7 @@ exports.getAllBookings = asyncHandler(async (req, res) => {
                 path: "membershipId", select: "title"
             }
         ])
+        .sort({ createdAt: -1 })
 
     res.status(200).json({
         results: books.length,
@@ -64,8 +63,14 @@ exports.getBookingById = asyncHandler(async (req, res, next) => {
 
 exports.getUserBookings = asyncHandler(async (req, res) => {
     const userId = req.user.userId
+    const user = await User.findById(userId)
+    if (!user) {
+        return next(new ApiError(404, `No user for this id ${id}`))
+    }
+
     const books = await BookMembership.find({ userId })
         .populate({ path: "membershipId" })
+        .sort({ createdAt: -1 })
 
     res.status(200).json({
         results: books.length,

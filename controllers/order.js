@@ -28,6 +28,7 @@ exports.getAllOrders = asyncHandler(async (req, res) => {
             { path: "userId", select: "email phoneNumber name" },
             { path: "items.productId", select: "title images price" }
         ])
+        .sort({ createdAt: -1 })
 
     res.status(200).json({
         results: orders.length,
@@ -45,6 +46,7 @@ exports.getUserOrders = asyncHandler(async (req, res) => {
 
     const userOrders = await Order.find({ userId })
         .populate({ path: "items.productId", select: "title images price" })
+        .sort({ createdAt: -1 })
 
     res.status(200).json({
         results: userOrders.length,
