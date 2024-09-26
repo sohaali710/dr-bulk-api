@@ -2,27 +2,34 @@ const asyncHandler = require("express-async-handler");
 const slugify = require("slugify");
 const ApiError = require("../utils/ApiError");
 const Product = require("../models/productModel");
+const getOrSetCache = require("../utils/getOrSetCache");
 
 exports.getProducts = asyncHandler(async (req, res) => {
   const page = +req.query.page || 1;
-  const limit = +req.query.limit || 20; // max number of items (students) per page
+  const limit = +req.query.limit || 30; // max number of items (students) per page
   const skip = (page - 1) * limit;
 
   /** filter by date */
-  // const { startDate = new Date('2000-01-01'), endDate = new Date() } = req.query
+  const { startDate = new Date("2000-01-01"), endDate = new Date() } =
+    req.query;
 
-  const productsPerPage = await Product.find({
-    // createdAt: {
-    //     $gte: startDate,
-    //     $lte: endDate
-    // }
+  const productsPerPageQuery = Product.find({
+    createdAt: {
+      $gte: startDate,
+      $lte: endDate,
+    },
   })
     .skip(skip)
     .limit(limit)
     .sort({ createdAt: -1 })
     .populate({ path: "category", select: "name" });
-  // .populate({ path: "category", select: "name -_id" })
 
+  const productsPerPage = await getOrSetCache(
+    `products?page=${page}&limit=${limit}`,
+    productsPerPageQuery
+  );
+
+  // count pagination info
   const productsNo = await Product.countDocuments();
   const numberOfPages =
     productsNo % limit == 0
