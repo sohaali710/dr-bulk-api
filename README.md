@@ -1,5 +1,27 @@
 # Dr-Bulk-API
-      
+
+### Dr Bulk GYM is a web application that provides gym services, including:
+
+- Membership and package plans
+
+- Healthy eating sessions
+
+- Details about fitness instructors and coaches
+
+- An online store for gym equipment and supplies
+
+### Technologies used:
+- Nodejs
+- Expressjs
+- MongoDB
+
+### Packages:
+- multer
+- nodemailer
+- Redis for caching
+- Swagger UI 
+
+------------------------------------------------------------------------
 #### 1) To install packages :
    
 ```
