@@ -22,7 +22,7 @@
 - Swagger UI 
 
 ------------------------------------------------------------------------
-### Steps to run the app locally:
+### Steps to run the application locally:
 
 #### 1) install packages :
    
