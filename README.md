@@ -22,15 +22,17 @@
 - Swagger UI 
 
 ------------------------------------------------------------------------
-#### 1) To install packages :
+### Steps to run the app locally:
+
+#### 1) install packages :
    
 ```
 npm i
 ```
 
-#### 2) To run the server
+#### 2) run the server
 
-In the production mode [frontend dev] :
+In the production mode :
 
 ```
 npm run prod
