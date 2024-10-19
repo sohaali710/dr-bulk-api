@@ -20,7 +20,7 @@ redisClient.on("error", (error) => console.error("Redis client error:", error));
   console.log("Redis client connected");
 })();
 
-const getOrSetCache = async (key, query) => {
+exports.getOrSetCache = async (key, query) => {
   try {
     const cachedData = await redisClient.get(key);
 
@@ -38,4 +38,14 @@ const getOrSetCache = async (key, query) => {
   }
 };
 
-module.exports = getOrSetCache;
+exports.deleteCashedData = async () => {
+  const keys = await redisClient.keys("*");
+
+  if (keys.length > 0) {
+    redisClient.del(keys, (err, result) => {
+      if (err) {
+        throw err;
+      }
+    });
+  }
+};
