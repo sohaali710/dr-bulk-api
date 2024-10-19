@@ -2,7 +2,7 @@ const asyncHandler = require("express-async-handler");
 const slugify = require("slugify");
 const ApiError = require("../utils/ApiError");
 const Product = require("../models/productModel");
-const getOrSetCache = require("../utils/getOrSetCache");
+const { getOrSetCache, deleteCashedData } = require("../utils/getOrSetCache");
 
 exports.getProducts = asyncHandler(async (req, res) => {
   const page = +req.query.page || 1;
@@ -82,7 +82,8 @@ exports.createProduct = asyncHandler(async (req, res, next) => {
     points,
     images,
   });
-  console.log(product);
+
+  deleteCashedData();
 
   res.status(201).json({ data: product });
 });
@@ -97,6 +98,8 @@ exports.updateProductById = asyncHandler(async (req, res, next) => {
     return next(new ApiError(404, `No product for this id ${id}`));
   }
 
+  deleteCashedData();
+
   res.status(200).json({ data: product });
 });
 
@@ -107,6 +110,8 @@ exports.deleteProductById = asyncHandler(async (req, res, next) => {
   if (!product) {
     return next(new ApiError(404, `No product for this id ${id}`));
   }
+
+  deleteCashedData();
 
   res.status(204).send();
 });
@@ -127,6 +132,8 @@ exports.addProductImg = asyncHandler(async (req, res, next) => {
   req.files.forEach((file) => product.images.push(file.path));
   await product.save();
 
+  deleteCashedData();
+
   res.status(200).json({ images: product.images });
 });
 
@@ -141,6 +148,8 @@ exports.removeProductImg = asyncHandler(async (req, res, next) => {
 
   product.images = product.images.filter((img) => img != removedImg);
   await product.save();
+
+  deleteCashedData();
 
   res.status(200).json({ images: product.images });
 });
@@ -158,6 +167,8 @@ exports.editorUpdateProduct = asyncHandler(async (req, res, next) => {
   if (!product) {
     return next(new ApiError(404, `No product for this id ${id}`));
   }
+
+  deleteCashedData();
 
   res.status(200).json({ data: product });
 });
