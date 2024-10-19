@@ -1,14 +1,38 @@
 # Dr-Bulk-API
-      
-#### 1) To install packages :
+
+### Dr Bulk GYM is a web application that provides gym services, including:
+
+- Membership and package plans
+
+- Healthy eating sessions
+
+- Details about fitness instructors and coaches
+
+- An online store for gym equipment and supplies
+
+### Technologies used:
+- Nodejs
+- Expressjs
+- MongoDB
+
+### Packages:
+- multer
+- nodemailer
+- Redis for caching
+- Swagger UI 
+
+------------------------------------------------------------------------
+### Steps to run the application locally:
+
+#### 1) install packages :
    
 ```
 npm i
 ```
 
-#### 2) To run the server
+#### 2) run the server
 
-In the production mode [frontend dev] :
+In the production mode :
 
 ```
 npm run prod
